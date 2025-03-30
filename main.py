@@ -14,10 +14,12 @@ from utils import wrap_labels
 from datetime import datetime
 
 # Folder containing Suricata logs
-log_folder = "suricata_logs_2025-03-07-23-29-31_igc2"
+log_folders = ["suricata_logs_2025-03-07-23-29-31_igc2", "suricata_logs_2025-03-15-03-10-01_igc2"]
 
 # Find all log files in the folder (assuming they have a .log extension)
-log_files = glob.glob(os.path.join(log_folder, "*.log.*"))
+log_files = []
+for log_folder in log_folders:
+    log_files.extend(glob.glob(os.path.join(log_folder, "*.log.*")))
 
 # Regular expression pattern to extract Suricata log fields
 pattern = re.compile(
